@@ -1,0 +1,67 @@
+function validLogin(){
+	_navigateTo("http://localwebapp:8888/wordpress/wp-admin");
+	_setValue(_byXPath("//input[@id='user_login']"), "ahmed");
+	_setValue(_byXPath("//input[@id='user_pass']"), "ahmed123");
+	_click(_byXPath("//input[@id='wp-submit']"));
+	_assertVisible(_byXPath("//a[contains(text(),'Howdy,')]"));
+}
+
+var $TitleName = "My 101th try";
+var $bodyText="i love animals, but i don't like tigers"
+
+
+function CreatePost(){
+
+	_click(_div("Posts")); //click on posts in dashboard
+	_click(_link("Add New[6]")); //click on add post box
+	_setValue (_textarea("post-title-0"),""); // empty the title to the post
+	_setValue (_textarea("post-title-0"),$TitleName);//add title to the post 
+	_keyPress(_textarea("post-title-0"), [13,13]); // to go to body
+	_setValue(_paragraph(0), $bodyText); 
+	
+//	_click(_button("components-button block-editor-inserter__toggle has-icon"));
+//	_click(_span("Image"));
+//	_windowAction("maximize");
+//	_click(_button("Upload"));
+//	_setFile(_file(_button("Upload")), "/Users/ahmed/Desktop/fileTest.png");
+	_wait(5000);
+	_click(_button("Publish…"));// first Publish
+	_click(_button("Publish")); //second Publish
+	
+}
+
+/*
+// config... 
+var $dbServer = "localhost";
+var $dbUser = "root ";
+var $dbPass = "root ";
+var $dbName = "inventory "; 
+
+
+var $db= _getDB("com.microsoft.sqlserver.jdbc.SQLServerDriver", "http://localhost:8888/phpMyAdmin/db_structure.php?server=1&db=wordpress", $dbName, $dbPass);
+
+// create a handle object...
+//var $db = _getDB("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://"+$dbServer+";databaseName="+$dbName+"", $dbUser, $dbPass);
+
+// get all rows from a table...
+var $rows = $db.select("Select * from MyTable");
+_alert($rows.length); // output number of rows returned...
+_alert($rows[0].toString()); // output the first row returned...
+
+
+//	_click(_button(2));	//click on add block icon
+
+//	_setValue(_searchbox("Search for a block"),"file"); 	// search and write file
+//	_click(_span("block-editor-block-icon has-colors[1]")); // click on file icon after search for it
+	//_click(_div("block-editor-writing-flow__click-redirect"));
+//	_click(_button("Upload"));	//click on upload button in the block
+/*
+	_getDB($driver, $jdbcurl, $username, $password);
+
+	var $driver= ("com.mysql.jdbc.Driver");
+var $jdbcurl=("/Applications/MAMP/tmp/mysql/mysql.sockx");
+var $username= ("ahmed");
+var $password= ("ahmed123");
+*/
+
+

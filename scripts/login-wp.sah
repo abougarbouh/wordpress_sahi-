@@ -1,0 +1,14 @@
+_includeOnce("../pageobject/po_wp-login.sah");
+
+
+try{ 
+		$value = 2;
+	validLogin();
+	CreatPage($value);
+	modifyPage($value);
+	deletePage();
+
+}
+catch($e){
+}
+

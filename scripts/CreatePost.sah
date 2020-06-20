@@ -1,0 +1,27 @@
+
+_includeOnce("../pageobject/po_CreatePost.sah");
+
+
+
+try{
+
+	_log("i am in");
+	   var $db = _getDB("com.mysql.jdbc.Driver", 
+							"jdbc:mysql://localhost:8889/wordpress?allowMultiQueries=true&amp;sessionVariables=sql_mode=NO_BACKSLASH_ESCAPES&amp;zeroDateTimeBehavior=convertToNull", 
+					"root", "root");
+	
+	   var $rs = $db.select("select * from wp_post");
+
+	   var $row = $rs[0];
+
+	   _log($row);
+
+
+	//validLogin();
+	//CreatePost();
+
+
+}
+catch($e){
+}
+
